@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify';
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import firebase from "firebase"
+// import firebase from "firebase"
 
 Vue.config.productionTip = false
 

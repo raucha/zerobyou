@@ -1,11 +1,12 @@
 <template>
   <v-container>
+    <a href="https://www.youtube.com/watch?v=L6xf_qmhffc">7分で学ぶ『ゼロ秒思考』</a>
     <v-row justify="center">
       <v-col cols="8">
         <v-text-field v-model="new_question_text" placeholder="ここに共有する質問文を記入"></v-text-field>
       </v-col>
       <v-col cols="2">
-        <v-btn justify="end" @click="addQuestion()">登録</v-btn>
+        <v-btn justify="end" @click="addQuestion();fetchQuestions();new_question_text=''">登録</v-btn>
         <!-- <v-btn justify="end" @click="say(new_question_text)">登録</v-btn> -->
       </v-col>
       <!-- <v-col>
@@ -114,6 +115,9 @@ firebase.initializeApp(firebaseConfig);
 export default {
   name: "MainPage",
 
+  created () {
+    this.fetchQuestions()
+  },
   data: () => ({
     new_question_text: "",
     questions: [
@@ -133,7 +137,12 @@ export default {
         upvote: 4,
         downvote: 2
       }
-    ],
+    ]
+  }),
+  methods: {
+    say: function (msg){
+      alert(msg)
+    },
     addQuestion(){
       if (""==this.new_question_text) {
         alert("登録文が空です。")
@@ -145,14 +154,17 @@ export default {
         downvote: 0
       }
       firebase.firestore().collection("questions").add(question)
-    }
-
-  }),
-  methods: {
-    say: function (msg){
-      alert(msg)
     },
-    
+    fetchQuestions() {
+      this.questions = []
+      firebase.firestore().collection(`questions`).get().then(snapshot => {
+        snapshot.forEach(doc => {
+          this.questions.unshift(doc.data())
+          console.log(doc.data())
+          // this.questions = snapshot
+        })
+      })
+    }
   }
 };
 </script>
