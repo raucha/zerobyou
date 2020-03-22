@@ -5,8 +5,9 @@
       color="primary"
       dark
     >
-      <div class="d-flex align-center display-1">
-        0秒思考実践 例題共有サイト
+      <!-- <div class="d-flex align-center display-1"> -->
+        <h2>
+        0秒思考実践 お題共有サイト</h2>
         <!-- <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
@@ -24,9 +25,9 @@
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
           width="100"
         /> -->
-      </div>
+      <!-- </div> -->
 
-      <v-spacer></v-spacer>
+      <!-- <v-spacer></v-spacer> -->
 
       <!-- <v-btn
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
